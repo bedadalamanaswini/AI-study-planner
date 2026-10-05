@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyFlow AI | Smart Study Planner</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Background -->
+<div class="background background-one"></div>
+<div class="background background-two"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        <div class="logo-icon">✦</div>
+        <div>
+            <strong>StudyFlow</strong>
+            <span>AI STUDY PLANNER</span>
+        </div>
+    </div>
+
+    <div class="nav-right">
+        <div class="status">
+            <span></span>
+            AI Ready
+        </div>
+
+        <button class="nav-button" onclick="scrollToPlanner()">
+            Create Plan
+        </button>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            ✦ SMARTER STUDYING STARTS HERE
+        </div>
+
+        <h1>
+            Study smarter.
+            <br>
+            <span>Not harder.</span>
+        </h1>
+
+        <p>
+            StudyFlow AI creates a personalized study schedule
+            based on your subjects, exams, difficulty and available
+            study time.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="primary-button" onclick="scrollToPlanner()">
+                Build My Study Plan
+                <b>→</b>
+            </button>
+
+            <button class="secondary-button" onclick="showHowItWorks()">
+                How it works
+            </button>
+
+        </div>
+
+        <div class="hero-features">
+
+            <div>
+                <span>✓</span>
+                Exam-focused
+            </div>
+
+            <div>
+                <span>✓</span>
+                Priority based
+            </div>
+
+            <div>
+                <span>✓</span>
+                Time optimized
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO CARD -->
+
+    <div class="hero-card">
+
+        <div class="card-top">
+            <span>AI PLANNER</span>
+
+            <div class="ai-dot">
+                <i></i>
+                Online
+            </div>
+        </div>
+
+        <h3>Your week, optimized.</h3>
+
+        <div class="mini-calendar">
+
+            <div class="day active">
+                <small>MON</small>
+                <strong>12</strong>
+            </div>
+
+            <div class="day">
+                <small>TUE</small>
+                <strong>13</strong>
+            </div>
+
+            <div class="day">
+                <small>WED</small>
+                <strong>14</strong>
+            </div>
+
+            <div class="day">
+                <small>THU</small>
+                <strong>15</strong>
+            </div>
+
+            <div class="day">
+                <small>FRI</small>
+                <strong>16</strong>
+            </div>
+
+        </div>
+
+        <div class="mini-task">
+            <div class="task-icon purple">∑</div>
+
+            <div>
+                <strong>Mathematics</strong>
+                <small>Algebra revision</small>
+            </div>
+
+            <b>1.5h</b>
+        </div>
+
+        <div class="mini-task">
+            <div class="task-icon green">⚛</div>
+
+            <div>
+                <strong>Physics</strong>
+                <small>Important formulas</small>
+            </div>
+
+            <b>1h</b>
+        </div>
+
+        <div class="mini-task">
+            <div class="task-icon orange">⌘</div>
+
+            <div>
+                <strong>Computer Science</strong>
+                <small>Data structures</small>
+            </div>
+
+            <b>2h</b>
+        </div>
+
+        <div class="progress-label">
+            <span>Weekly progress</span>
+            <b>68%</b>
+        </div>
+
+        <div class="progress-bar">
+            <div></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PLANNER -->
+
+<section class="planner-section" id="planner">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-number">01 — YOUR INPUT</span>
+
+            <h2>
+                Tell us about your exams.
+            </h2>
+
+            <p>
+                We'll turn your information into a realistic
+                study plan.
+            </p>
+        </div>
+
+        <div class="planner-badge">
+            🤖 AI Planning Engine
+        </div>
+
+    </div>
+
+
+    <div class="planner-grid">
+
+        <!-- LEFT FORM -->
+
+        <div class="planner-card">
+
+            <div class="form-section">
+
+                <h3>📚 Add your subjects</h3>
+
+                <p class="form-description">
+                    Add each subject with its exam date and difficulty.
+                </p>
+
+                <div id="subjectList">
+
+                    <!-- SUBJECT ROW -->
+
+                    <div class="subject-row">
+
+                        <div class="subject-color purple-color"></div>
+
+                        <input
+                            type="text"
+                            class="subject-name"
+                            placeholder="Subject name"
+                            value="Mathematics"
+                        >
+
+                        <input
+                            type="date"
+                            class="exam-date"
+                        >
+
+                        <select class="difficulty">
+
+                            <option value="1">Easy</option>
+                            <option value="2" selected>Medium</option>
+                            <option value="3">Hard</option>
+
+                        </select>
+
+                        <button
+                            class="delete-subject"
+                            onclick="removeSubject(this)"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="add-subject"
+                    onclick="addSubject()"
+                >
+                    + Add another subject
+                </button>
+
+            </div>
+
+
+            <div class="form-divider"></div>
+
+
+            <!-- AVAILABLE TIME -->
+
+            <div class="form-section">
+
+                <h3>⏱ Available study time</h3>
+
+                <p class="form-description">
+                    How much time can you realistically study?
+                </p>
+
+                <div class="hours-selector">
+
+                    <button onclick="setHours(1, this)">
+                        1h
+                    </button>
+
+                    <button onclick="setHours(2, this)">
+                        2h
+                    </button>
+
+                    <button class="selected" onclick="setHours(3, this)">
+                        3h
+                    </button>
+
+                    <button onclick="setHours(4, this)">
+                        4h
+                    </button>
+
+                    <button onclick="setHours(6, this)">
+                        6h+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-divider"></div>
+
+
+            <!-- STUDY PREFERENCE -->
+
+            <div class="form-section">
+
+                <h3>🌙 Study preference</h3>
+
+                <div class="preference-grid">
+
+                    <button
+                        class="preference selected"
+                        onclick="selectPreference(this)"
+                    >
+                        ☀️ Morning
+                    </button>
+
+                    <button
+                        class="preference"
+                        onclick="selectPreference(this)"
+                    >
+                        🌤 Afternoon
+                    </button>
+
+                    <button
+                        class="preference"
+                        onclick="selectPreference(this)"
+                    >
+                        🌙 Evening
+                    </button>
+
+                    <button
+                        class="preference"
+                        onclick="selectPreference(this)"
+                    >
+                        🔄 Flexible
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="generate-button"
+                onclick="generatePlan()"
+            >
+                <span>✦</span>
+                Generate My AI Study Plan
+                <b>→</b>
+            </button>
+
+        </div>
+
+
+        <!-- RIGHT AI PREVIEW -->
+
+        <div class="preview-card">
+
+            <div class="preview-header">
+
+                <div>
+
+                    <span>02 — AI PREVIEW</span>
+
+                    <h3>Your personalized plan</h3>
+
+                </div>
+
+                <div class="magic">✦</div>
+
+            </div>
+
+
+            <div id="emptyPreview" class="empty-preview">
+
+                <div class="empty-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Your plan will appear here
+                </h3>
+
+                <p>
+                    Add your subjects and available time.
+                    Our planning engine will prioritize your
+                    exams and build your schedule.
+                </p>
+
+                <div class="flow">
+
+                    <span>Subjects</span>
+
+                    <b>→</b>
+
+                    <span>Priorities</span>
+
+                    <b>→</b>
+
+                    <span>Schedule</span>
+
+                </div>
+
+            </div>
+
+
+            <div id="planResult" class="plan-result hidden">
+
+                <div class="plan-summary">
+
+                    <div>
+                        <small>YOUR PLAN</small>
+
+                        <strong id="planTitle">
+                            Today's Focus
+                        </strong>
+                    </div>
+
+                    <div class="plan-score">
+                        <span id="planPercent">92%</span>
+                        optimized
+                    </div>
+
+                </div>
+
+
+                <div class="today-label">
+                    TODAY
+                </div>
+
+
+                <div id="scheduleList"></div>
+
+
+                <div class="ai-note">
+
+                    <div class="note-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            AI recommendation
+                        </strong>
+
+                        <p id="aiRecommendation">
+                            Start with your highest-priority subject
+                            while your concentration is fresh.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="plan-actions">
+
+                    <button onclick="downloadPlan()">
+                        ⤓ Save Plan
+                    </button>
+
+                    <button onclick="generatePlan()">
+                        ↻ Regenerate
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="how-section">
+
+    <div class="section-heading center">
+
+        <span class="section-number">
+            03 — HOW IT WORKS
+        </span>
+
+        <h2>
+            From exam stress to a clear plan.
+        </h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step-card">
+
+            <div class="step-number">01</div>
+
+            <div class="step-icon">📋</div>
+
+            <h3>Tell us your goals</h3>
+
+            <p>
+                Enter your subjects, exam dates,
+                difficulty and available study hours.
+            </p>
+
+        </div>
+
+
+        <div class="step-line"></div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">02</div>
+
+            <div class="step-icon">🧠</div>
+
+            <h3>AI prioritizes</h3>
+
+            <p>
+                The planner considers exam urgency,
+                difficulty and your available time.
+            </p>
+
+        </div>
+
+
+        <div class="step-line"></div>
+
+
+        <div class="step-card">
+
+            <div class="step-number">03</div>
+
+            <div class="step-icon">🚀</div>
+
+            <h3>Follow your plan</h3>
+
+            <p>
+                Get a realistic daily schedule designed
+                to keep your preparation on track.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-logo">
+        ✦ StudyFlow AI
+    </div>
+
+    <p>
+        Built for students who want to make every study hour count.
+    </p>
+
+    <span>
+        AI Study Planner • Hackathon Project
+    </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
